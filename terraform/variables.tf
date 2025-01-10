@@ -26,13 +26,8 @@ variable "sku_name" {
   default     = "B1"
 }
 
-variable "docker_username" {
-  description = "Docker Hub username"
-  type        = string
-}
-
-variable "docker_password" {
-  description = "Docker Hub password or access token"
+variable "acr_name" {
+  description = "acr_name"
   type        = string
   sensitive   = true
 }
