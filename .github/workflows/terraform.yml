@@ -39,7 +39,11 @@ jobs:
 
     - name: 'Terraform Init'
       run: |
-        terraform init
+        terraform init \
+          -backend-config="storage_account_name=${{ secrets.AZURE_STORAGE_ACCOUNT }}" \
+          -backend-config="container_name=${{ secrets.AZURE_STORAGE_CONTAINER }}" \
+          -backend-config="key=terraform.tfstate" \
+          -backend-config="access_key=${{ secrets.AZURE_STORAGE_ACCESS_KEY }}"
       working-directory: ${{ env.WORKING_DIR }}
 
     - name: 'Terraform Plan'
