@@ -23,7 +23,9 @@ resource "azurerm_linux_web_app" "app" {
   location            = var.location
   service_plan_id     = azurerm_service_plan.app_plan.id
 
-  site_config {}
+  site_config {
+    always_on = false
+  }
 
   tags = {
     environment = var.environment
