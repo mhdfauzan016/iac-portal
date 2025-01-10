@@ -1,5 +1,5 @@
 resource_group_name = "mhhd.fauzan016"
-app_name           = "portal-admin"
+app_name           = "portal-admin-flexidev"
 environment        = "dev"
 location           = "southeastasia"
 sku_name           = "B1"
