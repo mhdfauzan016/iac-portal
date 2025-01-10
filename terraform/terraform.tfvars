@@ -1,4 +1,4 @@
-resource_group_name = "portal-admin"
+resource_group_name = "mhhd.fauzan016"
 app_name           = "portal-admin"
 environment        = "dev"
 location           = "southeastasia"
