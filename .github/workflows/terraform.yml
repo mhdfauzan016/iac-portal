@@ -31,6 +31,7 @@ jobs:
         # Use sed to find and replace a key-value pair in terraform.tfvars
         sed -i 's|<username>|${{ secrets.DOCKER_HUB_USERNAME }}|g' terraform.tfvars
         sed -i 's|<token>|${{ secrets.DOCKER_HUB_TOKEN }}|g' terraform.tfvars
+      working-directory: ${{ env.WORKING_DIR }}
     
     - name: 'Terraform Format'
       run: terraform fmt -check
@@ -38,11 +39,7 @@ jobs:
 
     - name: 'Terraform Init'
       run: |
-        terraform init \
-          -backend-config="storage_account_name=${{ secrets.AZURE_STORAGE_ACCOUNT }}" \
-          -backend-config="container_name=${{ secrets.AZURE_STORAGE_CONTAINER }}" \
-          -backend-config="key=terraform.tfstate" \
-          -backend-config="access_key=${{ secrets.AZURE_STORAGE_ACCESS_KEY }}"
+        terraform init
       working-directory: ${{ env.WORKING_DIR }}
 
     - name: 'Terraform Plan'
@@ -51,6 +48,6 @@ jobs:
       working-directory: ${{ env.WORKING_DIR }}
 
     - name: 'Terraform Apply'
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: terraform apply -auto-approve
       working-directory: ${{ env.WORKING_DIR }}

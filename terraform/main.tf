@@ -32,11 +32,7 @@ resource "azurerm_linux_web_app" "app" {
   location            = azurerm_resource_group.rg.location
   service_plan_id     = azurerm_service_plan.app_plan.id
 
-  site_config {
-    application_stack {
-      docker_image_name     = "${var.docker_username}/${var.app_name}/latest"
-    }
-  }
+  site_config {}
 
   app_settings = {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
