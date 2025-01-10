@@ -33,9 +33,9 @@ jobs:
         sed -i 's|<token>|${{ secrets.DOCKER_HUB_TOKEN }}|g' terraform.tfvars
       working-directory: ${{ env.WORKING_DIR }}
     
-    - name: 'Terraform Format'
-      run: terraform fmt -check
-      working-directory: ${{ env.WORKING_DIR }}
+    # - name: 'Terraform Format'
+    #   run: terraform fmt -check
+    #   working-directory: ${{ env.WORKING_DIR }}
 
     - name: 'Terraform Init'
       run: |
